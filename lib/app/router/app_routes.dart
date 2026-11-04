@@ -1,0 +1,34 @@
+abstract final class AppRoutes {
+  static const splash = '/';
+  static const welcome = '/welcome';
+  static const language = '/language';
+  static const login = '/login';
+  static const otp = '/otp';
+  static const profile = '/profile';
+  static const home = '/home';
+  static const planRide = '/plan-ride';
+  static const stops = '/stops';
+  static const addStop = '/add-stop';
+  static const chooseRide = '/choose-ride';
+  static const sharedRide = '/shared-ride';
+  static const pickupDetails = '/pickup-details';
+  static const pickupSpot = '/pickup-spot';
+  static const rideRequested = '/ride-requested';
+  static const rideTracking = '/ride-tracking';
+  static const rideDetails = '/ride-details';
+  static const activeRide = '/active-ride';
+  static const tripCompleted = '/trip-completed';
+  static const payment = '/payment';
+  static const tripReceipt = '/trip-receipt';
+  static const tripInvoice = '/trip-invoice';
+  static const savedLocations = '/saved-locations';
+  static const liveRide = '/live-ride';
+  static const contactDriver = '/contact-driver';
+  static const shareTrip = '/share-trip';
+  static const changeDestination = '/change-destination';
+  static const reviewFare = '/review-fare';
+  static const sos = '/sos';
+  static const safety = '/safety';
+  static const cancelRequest = '/cancel-request';
+  static const cancelReason = '/cancel-reason';
+}
