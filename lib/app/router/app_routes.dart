@@ -10,6 +10,7 @@ abstract final class AppRoutes {
   static const stops = '/stops';
   static const addStop = '/add-stop';
   static const chooseRide = '/choose-ride';
+  static const cabTier = '/cab-tier';
   static const sharedRide = '/shared-ride';
   static const pickupDetails = '/pickup-details';
   static const pickupSpot = '/pickup-spot';

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../app/router/app_routes.dart';
 import '../../../ride/presentation/providers/ride_providers.dart';
+import '../providers/home_providers.dart';
 import '../widgets/arriving_banner.dart';
 import '../widgets/home_bottom_nav.dart';
 import '../widgets/ride_card.dart';
@@ -15,6 +16,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final destination = ref.watch(homeDestinationProvider);
+    final mode = ref.watch(homeRideModeProvider);
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
@@ -38,6 +40,10 @@ class HomeScreen extends ConsumerWidget {
                       const SizedBox(height: 12),
                       RideCard(
                         destination: destination.name,
+                        mode: mode,
+                        onModeChanged: ref
+                            .read(homeRideModeProvider.notifier)
+                            .select,
                         onPlan: () => context.push(AppRoutes.planRide),
                         onBook: () => context.push(AppRoutes.planRide),
                       ),

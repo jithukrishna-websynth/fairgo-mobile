@@ -66,6 +66,7 @@ class PlanRideScreen extends StatelessWidget {
                 itemCount: recentPlaces.length,
                 separatorBuilder: (_, _) => const SizedBox(height: 8),
                 itemBuilder: (_, i) => PlaceTile(
+                  filled: true,
                   place: recentPlaces[i],
                   onTap: () => context.push(AppRoutes.stops),
                 ),

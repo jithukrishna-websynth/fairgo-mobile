@@ -7,6 +7,7 @@ import '../../features/onboarding/presentation/screens/language_screen.dart';
 import '../../features/onboarding/presentation/screens/splash_screen.dart';
 import '../../features/onboarding/presentation/screens/welcome_screen.dart';
 import '../../features/ride/presentation/screens/cancel_reason_screen.dart';
+import '../../features/ride/presentation/screens/select_cab_tier_screen.dart';
 import '../../features/ride/presentation/screens/cancel_request_screen.dart';
 import '../../features/ride/presentation/screens/change_destination_screen.dart';
 import '../../features/ride/presentation/screens/contact_driver_screen.dart';
@@ -66,6 +67,10 @@ GoRouter createRouter({String initialLocation = AppRoutes.splash}) => GoRouter(
     GoRoute(
       path: AppRoutes.chooseRide,
       builder: (_, _) => const ChooseRideScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.cabTier,
+      builder: (_, _) => const SelectCabTierScreen(),
     ),
     GoRoute(
       path: AppRoutes.sharedRide,

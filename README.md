@@ -49,6 +49,8 @@ Widget tests cover every screen (`test/features/...`), validators and state (`te
 | Change Destination | Implemented |
 | Review Updated Fare | Implemented (demo fares) |
 | Emergency SOS | Implemented as a DEMO: sends no alert (see `sosIntegrated`) |
+| Select a Cab (tiers) | Implemented (demo fares; women-only not enforced) |
+| Home — Ride mode | Implemented (Ride / Share a Ride toggle) |
 | Cancel ride? (while finding a driver) | Implemented (no backend; cancelling returns Home) |
 | Cancel ride — Select Reason | Implemented (reason not sent anywhere yet) |
 | Safety & Emergency | Implemented (Call Police opens the dialer with 112; contacts are demo data; support/tips/edit inert) |

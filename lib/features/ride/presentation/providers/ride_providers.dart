@@ -103,3 +103,14 @@ class PendingDestination extends Notifier<Place?> {
 final pendingDestinationProvider = NotifierProvider<PendingDestination, Place?>(
   PendingDestination.new,
 );
+
+class SelectedCabTier extends Notifier<String> {
+  @override
+  String build() => 'mini';
+
+  void select(String id) => state = id;
+}
+
+final selectedCabTierProvider = NotifierProvider<SelectedCabTier, String>(
+  SelectedCabTier.new,
+);

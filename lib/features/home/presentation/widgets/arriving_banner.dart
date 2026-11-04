@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/constants/vehicle.dart';
+import '../../../../core/widgets/vehicle_icon.dart';
 
 /// DEMO content: shows a static driver-arriving state until trips are live.
 class ArrivingBanner extends StatelessWidget {
@@ -23,10 +25,12 @@ class ArrivingBanner extends StatelessWidget {
               color: AppColors.lime,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Icon(
-              Icons.two_wheeler,
-              size: 24,
-              color: AppColors.forest,
+            child: const Center(
+              child: VehicleIcon(
+                Vehicle.bike,
+                width: 30,
+                color: AppColors.forest,
+              ),
             ),
           ),
           const SizedBox(width: 10),
