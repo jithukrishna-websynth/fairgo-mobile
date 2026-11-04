@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/constants/vehicle.dart';
+import '../../../../core/widgets/vehicle_icon.dart';
+import '../providers/home_providers.dart';
 import 'glass_card.dart';
 
 /// "Choose Your Ride" card plus the start/destination card beneath it.
@@ -8,9 +11,14 @@ class RideCard extends StatelessWidget {
   const RideCard({
     super.key,
     required this.destination,
+    required this.mode,
+    required this.onModeChanged,
     required this.onPlan,
     required this.onBook,
   });
+
+  final RideMode mode;
+  final ValueChanged<RideMode> onModeChanged;
 
   final String destination;
   final VoidCallback onPlan;
@@ -20,12 +28,12 @@ class RideCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const GlassCard(
-          padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+        GlassCard(
+          padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.fromLTRB(2, 0, 0, 12),
                 child: Text(
                   'Choose Your Ride',
@@ -36,17 +44,26 @@ class RideCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: _ModeTile(
+                      key: const Key('mode_ride'),
                       label: 'Ride',
-                      icon: Icons.directions_car_filled,
-                      selected: false,
+                      iconBuilder: (c) =>
+                          VehicleIcon(Vehicle.car, width: 22, color: c),
+                      selected: mode == RideMode.ride,
+                      onTap: () => onModeChanged(RideMode.ride),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Expanded(
                     child: _ModeTile(
+                      key: const Key('mode_share'),
                       label: 'Share a Ride',
-                      icon: Icons.calendar_today_outlined,
-                      selected: true,
+                      iconBuilder: (c) => Icon(
+                        Icons.calendar_today_outlined,
+                        size: 16,
+                        color: c,
+                      ),
+                      selected: mode == RideMode.share,
+                      onTap: () => onModeChanged(RideMode.share),
                     ),
                   ),
                 ],
@@ -87,43 +104,47 @@ class RideCard extends StatelessWidget {
 
 class _ModeTile extends StatelessWidget {
   const _ModeTile({
+    super.key,
     required this.label,
-    required this.icon,
+    required this.iconBuilder,
     required this.selected,
+    required this.onTap,
   });
 
+  final VoidCallback onTap;
+
   final String label;
-  final IconData icon;
+  final Widget Function(Color color) iconBuilder;
   final bool selected;
 
   @override
   Widget build(BuildContext context) {
     final fg = selected ? AppColors.lime : AppColors.textPrimary;
-    return Container(
-      height: 52,
-      padding: const EdgeInsets.symmetric(horizontal: 14),
-      decoration: BoxDecoration(
-        color: selected ? AppColors.forest : const Color(0xFFF4F6FB),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              label,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: fg,
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: Container(
+        height: 52,
+        padding: const EdgeInsets.symmetric(horizontal: 14),
+        decoration: BoxDecoration(
+          color: selected ? AppColors.forest : const Color(0xFFF4F6FB),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                label,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: fg,
+                ),
               ),
             ),
-          ),
-          Icon(
-            icon,
-            size: 16,
-            color: selected ? AppColors.lime : Colors.black54,
-          ),
-        ],
+            iconBuilder(selected ? AppColors.lime : Colors.black54),
+          ],
+        ),
       ),
     );
   }

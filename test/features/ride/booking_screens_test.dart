@@ -144,7 +144,7 @@ void main() {
       expect(find.text('Bike Saver'), findsOneWidget);
       expect(find.text('₹39.00'), findsOneWidget);
       expect(find.text('₹44.00'), findsOneWidget);
-      expect(find.text('Go Non AC'), findsOneWidget);
+      expect(find.text('Cab Non AC'), findsOneWidget);
       expect(find.text('₹125.90'), findsOneWidget);
       expect(find.text('Choose Auto'), findsOneWidget);
     });
@@ -153,7 +153,7 @@ void main() {
       await pumpApp(t, AppRoutes.chooseRide);
       await t.tap(find.byKey(const Key('ride_cab')));
       await t.pump();
-      expect(find.text('Choose Go Non AC'), findsOneWidget);
+      expect(find.text('Choose Cab'), findsOneWidget);
       await t.tap(find.byKey(const Key('ride_bike')));
       await t.pump();
       expect(find.text('Choose Bike Saver'), findsOneWidget);

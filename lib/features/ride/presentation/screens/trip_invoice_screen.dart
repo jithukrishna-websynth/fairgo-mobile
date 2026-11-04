@@ -3,7 +3,9 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../app/theme/app_colors.dart';
 import '../../../../app/theme/app_spacing.dart';
+import '../../../../core/constants/vehicle.dart';
 import '../../../../core/widgets/fair_go_logo.dart';
+import '../../../../core/widgets/vehicle_icon.dart';
 import '../widgets/trip_actions.dart';
 
 /// DEMO content copied from the design; the figures do not add up
@@ -179,7 +181,7 @@ class _TripDetailsCard extends StatelessWidget {
             ),
             child: const Row(
               children: [
-                Icon(Icons.directions_car_filled, size: 28),
+                VehicleIcon(Vehicle.car, width: 36, color: AppColors.forest),
                 SizedBox(width: 12),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

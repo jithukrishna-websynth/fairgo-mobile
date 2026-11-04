@@ -91,6 +91,7 @@ class _ChangeDestinationScreenState
                 itemBuilder: (_, i) {
                   final place = recentPlaces[i];
                   return PlaceTile(
+                    filled: true,
                     place: place,
                     selected: identical(place, _selected),
                     onTap: () => setState(() => _selected = place),

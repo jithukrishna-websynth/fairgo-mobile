@@ -10,22 +10,28 @@ class PlaceTile extends StatelessWidget {
     required this.place,
     required this.onTap,
     this.selected = false,
+    this.filled = false,
   });
 
   final Place place;
   final VoidCallback onTap;
   final bool selected;
 
+  /// Light-grey fill without an outline (Plan your ride, Change Destination).
+  final bool filled;
+
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: filled ? const Color(0xFFF5F5F5) : Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
-        side: BorderSide(
-          color: selected ? AppColors.forest : AppColors.border,
-          width: selected ? 1.5 : 1,
-        ),
+        side: filled && !selected
+            ? BorderSide.none
+            : BorderSide(
+                color: selected ? AppColors.forest : AppColors.border,
+                width: selected ? 1.5 : 1,
+              ),
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
